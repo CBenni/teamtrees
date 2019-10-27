@@ -4,7 +4,10 @@ import getTotal from './total';
 const port = process.env.PORT || 3000;
 let total = 0;
 setInterval(async () => {
-  total = await getTotal();
+  const newTotal = await getTotal();
+  if (newTotal) {
+    total = newTotal;
+  }
 }, 3000);
 
 const server = http.createServer((req, res) => {
